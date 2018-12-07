@@ -5,3 +5,10 @@ C:\Users\shubh\source\repos\TcpServer\TcpServer\obj\Debug\TcpServer.csproj.CoreC
 C:\Users\shubh\source\repos\TcpServer\TcpServer\obj\Debug\TcpServer.exe
 C:\Users\shubh\source\repos\TcpServer\TcpServer\obj\Debug\TcpServer.pdb
 C:\Users\shubh\source\repos\TcpServer\TcpServer\obj\Debug\TcpServer.csprojAssemblyReference.cache
+C:\Users\shubh\WifiTcp\VC#\TcpServer\bin\Debug\TcpServer.exe.config
+C:\Users\shubh\WifiTcp\VC#\TcpServer\bin\Debug\TcpServer.exe
+C:\Users\shubh\WifiTcp\VC#\TcpServer\bin\Debug\TcpServer.pdb
+C:\Users\shubh\WifiTcp\VC#\TcpServer\obj\Debug\TcpServer.csprojAssemblyReference.cache
+C:\Users\shubh\WifiTcp\VC#\TcpServer\obj\Debug\TcpServer.csproj.CoreCompileInputs.cache
+C:\Users\shubh\WifiTcp\VC#\TcpServer\obj\Debug\TcpServer.exe
+C:\Users\shubh\WifiTcp\VC#\TcpServer\obj\Debug\TcpServer.pdb

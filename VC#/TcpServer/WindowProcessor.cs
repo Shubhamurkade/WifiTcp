@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Automation;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Threading;
 using System.Text;
@@ -9,64 +8,6 @@ namespace TcpServer
 {
     static class WindowProcessor
     {
-        [DllImport("user32.dll", EntryPoint = "FindWindowEx",
-         CharSet = CharSet.Auto)]
-        public static extern IntPtr FindWindowEx(IntPtr hwndParent,
-         IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
-
-        [DllImport("user32.dll")]
-        public static extern int SetWindowText(IntPtr hWnd, string text);
-
-        public static void GetWindowElements(IntPtr handle)
-        {
-            
-        }
-
-        public static AutomationElement GetAutomationElementFromHandle(IntPtr handle)
-        {
-            return AutomationElement.FromHandle(handle);
-        }
-
-        public static AutomationElementCollection FindElementsByCondition(AutomationElement element)
-        {
-            return element.FindAll(TreeScope.Children, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Edit));
-        }
-
-        public static int GetAllChildrenWindowHandles(IntPtr hParent, int maxCount)
-        {
-            while (true)
-            {
-                int ct = 0;
-
-                IntPtr currChild = IntPtr.Zero;
-
-                while (ct < maxCount)
-                {
-                    currChild = FindWindowEx(hParent, IntPtr.Zero, null, null);
-                    if (currChild == IntPtr.Zero) break;
-
-                    AutomationElement element = WindowProcessor.GetAutomationElementFromHandle(currChild);
-
-                    //Console.WriteLine(element.GetCurrentPropertyValue(AutomationElement.NameProperty) as string);
-
-                    //Console.WriteLine(element.GetCurrentPropertyValue(AutomationElement.IsTextPatternAvailableProperty)) ;
-                    AutomationElementCollection colleciton = element.FindAll(TreeScope.Children, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Edit));
-
-                    foreach(AutomationElement el in colleciton)
-                    {
-                        Console.WriteLine(el);
-                        InsertTextUsingUIAutomation(element, "abc", out StringBuilder a, out Boolean c);
-                        Console.WriteLine(a);
-                    }
-                    
-                    hParent = currChild;
-                    ++ct;
-                }
-
-            }
-            return 1;
-        }
-
         public static void InsertTextUsingUIAutomation(AutomationElement element,
                                     string value, out StringBuilder feedbackText, out Boolean resultStat)
         {

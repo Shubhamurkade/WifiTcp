@@ -1,18 +1,13 @@
-﻿
-
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Windows.Automation;
-using System.Collections;
 
 namespace TcpServer
 {
-
     // State object for reading client data asynchronously  
     public class StateObject
     {
@@ -191,18 +186,7 @@ namespace TcpServer
             foreach(Process proc in processes)
             {
                 IntPtr handle = proc.MainWindowHandle;
-                AutomationElement element = WindowProcessor.GetAutomationElementFromHandle(handle);
-
-                //Console.WriteLine(element.FindFirst(TreeScope.Children, new PropertyCondition(AutomationElement.NameProperty, "new1")));
-
-                //WindowProcessor.GetAllChildrenWindowHandles(handle, 100);
-                /*
-                WindowProcessor.SetWindowText(handle, "hello");
-
-                WindowProcessor.GetAllChildrenWindowHandles(handle, 1000);
-                */
-
-                //AutomationElementCollection collection = WindowProcessor.FindElementsByCondition(element);
+                AutomationElement element = AutomationElement.FromHandle(handle);
 
                 Condition conditions = new AndCondition(
                   new PropertyCondition(AutomationElement.IsEnabledProperty, true),
@@ -213,7 +197,6 @@ namespace TcpServer
                 // Find all children that match the specified conditions.
                 AutomationElementCollection elementCollection =
                    element.FindAll(TreeScope.Children, conditions);
-                //return elementCollection;
 
                 StringBuilder feedBackText = new StringBuilder();
                 Boolean resultStat = false;
@@ -222,26 +205,10 @@ namespace TcpServer
                     WindowProcessor.InsertTextUsingUIAutomation(x, "Hello World!", out feedBackText, out resultStat);
                     Console.WriteLine(x.GetCurrentPropertyValue(AutomationElement.ClassNameProperty));
                     Console.WriteLine(feedBackText);
-                }
-
-                /*IEnumerator enumerator = collection.GetEnumerator();
-
-                foreach(AutomationElement el in collection)
-                {
-                    Console.WriteLine(el);
-                    WindowProcessor.InsertTextUsingUIAutomation(element, "abc", out StringBuilder a);
-                    Console.WriteLine(a);
-                }*/
-
-               
-            }
-
-           
+                }               
+            }           
 
             StartListening(localIpAddress);
-        }
-
-       
-            
+        }            
     }
 }
